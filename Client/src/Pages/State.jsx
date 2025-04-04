@@ -9,7 +9,7 @@ const State = ()=>{
         const api = "http://localhost:8000/state/insertstate";
         const response =await axios.post(api, {state:state});
         console.log(response.data);
-        alert("your are login");
+        alert(response.data.msg);
 
     }
     console.log(state);

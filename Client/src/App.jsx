@@ -7,6 +7,7 @@ import About from './Pages/About'
 import State from './Pages/State'
 import City from './Pages/City'
 import Employee from './Pages/Employee'
+import Display from './Pages/DisplayPage'
 
 function App() {
  
@@ -22,6 +23,7 @@ function App() {
       <Route path='state' element={<State/>}/>
       <Route path='city' element={<City/>}/>
       <Route path='employee' element={<Employee/>}/>
+      <Route path='display' element={<Display/>}/>
       </Route>
     </Routes>
     </BrowserRouter>

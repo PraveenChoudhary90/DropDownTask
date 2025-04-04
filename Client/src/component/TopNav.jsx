@@ -16,6 +16,7 @@ const TopNav = ()=>{
             <Nav.Link as={Link} to="state">State</Nav.Link>
             <Nav.Link as={Link} to="city">City</Nav.Link>
             <Nav.Link as={Link} to="employee">Employee</Nav.Link>
+            <Nav.Link as={Link} to="display">Display Page</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
