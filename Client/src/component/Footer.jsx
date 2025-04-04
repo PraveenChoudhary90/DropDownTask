@@ -4,7 +4,7 @@ const Footer = ()=>{
     return(
         <>
         <div id="footer">
-            <h1>www.mycompany.com</h1>
+            <h1>www.mytaskcompany.com</h1>
         </div>
         </>
     )
