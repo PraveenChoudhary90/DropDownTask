@@ -48,22 +48,27 @@ const ShowCountryState = async(req,res)=>{
 
 
 const InsertCity = async(req,res)=>{
-    console.log(req.body);
-    res.send("okk");
+   
     
-    // const {countrydata,statedata,city} = req.body;
-    // try {
-    //     const Data = await CityModel.create({
-    //         city:city,
-    //         countryinfo:countrydata,
-    //         stateinfo:statedata,
+    const {countrydata,statedata,city} = req.body;
+    try {
+        const Data = await CityModel.create({
+            city:city,
+            countryinfo:countrydata,
+            stateinfo:statedata,
             
-    //     })
-    //     // await CityModel.findByIdAndUpdate(Data._id,{ $push: {countryinfo:countrydata,stateinfo:statedata} })
-    //     res.status(200).send({msg:"Your City is Insertd Successfully"});
-    // } catch (error) {
-    //     console.log(error);
-    // }
+        })
+        // await CityModel.findByIdAndUpdate(Data._id,{ $push: {countryinfo:countrydata,stateinfo:statedata} })
+        res.status(200).send({msg:"Your City is Insertd Successfully"});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+const DisplayData = async(req,res)=>{
+    const AllData = await CityModel.find().populate("countryinfo").populate("stateinfo");
+    res.send(AllData);
 }
 
 
@@ -72,5 +77,6 @@ module.exports = {
     ShowCountry,
     InsertState,
     ShowCountryState,
-    InsertCity
+    InsertCity,
+    DisplayData
 }

@@ -10,6 +10,7 @@ route.get("/showcountry", TaskConroller.ShowCountry);
 route.post("/insertstate", TaskConroller.InsertState);
 route.get("/showcountrystate", TaskConroller.ShowCountryState);
 route.post("/insertcity", TaskConroller.InsertCity);
+route.get("/DisplayData", TaskConroller.DisplayData);
 
 
 
