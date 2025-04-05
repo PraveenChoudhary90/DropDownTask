@@ -25,7 +25,7 @@ console.log(data);
 
         let api ="http://localhost:8000/state/delete"
         let response =await axios.post(api,{id:id});
-        alert("Delete it your ")
+        alert("Delete your data ")
         console.log(id)
         setReload(true)
     }
