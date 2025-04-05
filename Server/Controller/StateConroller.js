@@ -37,7 +37,8 @@ const InsertCity=async(req,res)=>{
     res.status(200).send({msg:"City is Inserted"})
     console.log(data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
+
         
     }
     

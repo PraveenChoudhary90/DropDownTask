@@ -14,16 +14,16 @@ export default function Display() {
     
     let[editDatainfo,setEditDatainfo]=useState({});
     let loading=async()=>{
-        let api="http://localhost:9000/user/ShowAllData";
+        let api="http://localhost:8000/state/ShowAllData";
         let reponse=await axios.get(api);
         console.log(reponse.data);
         setData(reponse.data);
 
     }
-
+console.log(data);
     const deleted=async(id)=>{
 
-        let api ="http://localhost:9000/user/delete"
+        let api ="http://localhost:8000/state/delete"
         let response =await axios.post(api,{id:id});
         alert("Delete it your ")
         console.log(id)
@@ -33,7 +33,7 @@ export default function Display() {
 
 
     const editData=async(id)=>{
-        let api="http://localhost:9000/user/editSearch";
+        let api="http://localhost:8000/state/editSearch";
         let response= await axios.post(api,{id:id});
         console.log(response.data);
         seteditInput(response.data)
@@ -65,7 +65,7 @@ export default function Display() {
     }
 
     const SendTheEditData=async()=>{
-        let api ="http://localhost:9000/user/editit ";
+        let api ="http://localhost:8000/state/editit ";
         let response =await axios.post(api,{stateedit:state,cityedit:city,id:editinput._id,name:editinput.name})
         console.log(response.data);
         alert("update id Successfully completed")

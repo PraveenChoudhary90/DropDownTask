@@ -11,7 +11,7 @@ export default function City() {
         console.log(response.data);
         alert("Insert the City is completed")
     }
-
+console.log(state);
     const loading=async()=>{
         let api="http://localhost:8000/state/showstate";
         let response=await axios.get(api);

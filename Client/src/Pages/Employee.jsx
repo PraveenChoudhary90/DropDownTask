@@ -15,6 +15,7 @@ export default function Employee() {
         alert("your employee is insert konw")
     }
 
+    console.log(statedata);
 
     let loading=async()=>{
         let api="http://localhost:8000/state/showstate"
