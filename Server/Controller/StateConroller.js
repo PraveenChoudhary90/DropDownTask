@@ -10,7 +10,7 @@ const StateInsert = async(req,res)=>{
         const data = await StateModel.create({
             state:state
         })
-        res.status(200).send({msg:"State are insert"});
+        res.status(200).send({msg:"State is insert"});
         
     } catch (error) {
         console.log(error);
@@ -26,12 +26,21 @@ const ShowState=async(req,res)=>{
 
 const InsertCity=async(req,res)=>{
     // console.log(req.body);
+    // res.send("okk");
+    
     const { city, state}=req.body;
-    const data =await CityModel.create({
+    try {
+        const data =await CityModel.create({
         city:city
     }) 
     await CityModel.findByIdAndUpdate(data._id,{ $push: { stateId:state} })
-    res.send("okk")
+    res.status(200).send({msg:"City is Inserted"})
+    console.log(data);
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
 }
 
 

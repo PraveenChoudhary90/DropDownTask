@@ -6,7 +6,7 @@ export default function City() {
     let [state,setState]=useState("");
     let[data,setdata]=useState([]);
     const Submitcity=async()=>{
-        let api="http://localhost:8000/state/city";
+       const api = "http://localhost:8000/state/City";
         let response=await axios.post(api,{city:city,state:state});
         console.log(response.data);
         alert("Insert the City is completed")

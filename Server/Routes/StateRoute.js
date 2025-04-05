@@ -7,7 +7,7 @@ const StateController = require("../Controller/StateConroller");
 
 route.post("/insertstate", StateController.StateInsert);
 route.get("/showstate",StateController.ShowState)
-route.post("/city",StateController.InsertCity)
+route.post("/City",StateController.InsertCity)
 route.post("/showcity",StateController.ShowCityname)
 route.post("/name",StateController.EnterName);
 route.get("/ShowAllData",StateController.ShowAllData);
