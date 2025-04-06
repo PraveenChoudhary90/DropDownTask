@@ -1,11 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-
+import Table from 'react-bootstrap/Table';
+import {useNavigate} from "react-router-dom";
 
 const Display = ()=>{
     const [mydata, setmydata]= useState([]);
+    // let[reload,setReload]=useState(false);
+    const navigate = useNavigate();
 
+
+const HandelUpdateData =(id)=>{
+    navigate(`/update/${id}`);
+ }
 
     const LoadData = async()=>{
         const api = "http://localhost:8000/Task/DisplayData";
@@ -23,6 +29,30 @@ const Display = ()=>{
     LoadData();
   },[]);
 
+
+
+   const HandelDelete = async(id)=>{
+    const api = "http://localhost:8000/Task/DeleteData";
+    try {
+        const response = await axios.post(api, {id:id});
+        console.log(response.data);
+        alert("Data Is Deleted");
+        // setReload(true);
+    } catch (error) {
+        console.log(error);
+    }
+   }
+
+//    useEffect(()=>{
+//    },[reload]);
+
+
+
+  
+
+ 
+
+
   let sno = 0;
   const ans= mydata.map((key)=>{
     sno++;
@@ -33,8 +63,11 @@ const Display = ()=>{
             <td>{key.countryinfo.country}</td>
             <td>{key.stateinfo.state}</td>
             <td>{key.city}</td>
-            <td>Delete</td>
-            <td>Update</td>
+            <td>
+            <button onClick={()=>{HandelDelete(key._id)}}>Delete</button>
+            </td>
+            <td>
+               <button onClick={()=>{HandelUpdateData(key._id)}}> Update  </button>  </td>
         </tr>
         </>
     )
@@ -45,18 +78,23 @@ const Display = ()=>{
     return(
         <>
         <h1>Display Page</h1>
-        <table border="1px" align="center">
-            <tr>
-                
-                <th></th>
+
+            <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th></th>
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
                 <th>Delete</th>
                 <th>Update</th>
-            </tr>
-            {ans}
-        </table>
+        </tr>
+      </thead>
+      <tbody>
+        {ans}
+      </tbody>
+      </Table>
+      
         </>
     )
 }

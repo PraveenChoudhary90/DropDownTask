@@ -7,6 +7,7 @@ import Country from './Pages/Country'
 import State from './Pages/State'
 import City from './Pages/City'
 import Display from './Pages/Display'
+import Update from './Pages/Update'
 
 function App() {
   
@@ -21,7 +22,8 @@ function App() {
       <Route path='country' element={<Country/>}/>
       <Route path='state' element={<State/>}/>
       <Route path='city' element={<City/>}/>
-      <Route path='display' element={<Display/>}/>
+      <Route path='/display' element={<Display/>}/>
+      <Route path='/update/:id' element={<Update/>}/>
 
       </Route>
     </Routes>

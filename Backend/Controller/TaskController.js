@@ -71,6 +71,55 @@ const DisplayData = async(req,res)=>{
     res.send(AllData);
 }
 
+const DeleteData = async(req,res)=>{
+    const {id}=req.body;
+    try {
+        const data = await CityModel.findByIdAndDelete(id);
+        res.send("Data Is Delete")
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const ShoWFromData = async(req,res)=>{
+    const {id}= req.body;
+    try {
+        const Data = await CityModel.findById(id).populate("countryinfo").populate("stateinfo");
+        res.status(200).send(Data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const UpdateData = async(req,res)=>{
+    const {id,city,country,state}= req.body;
+    try {
+        const Data = await CityModel.findByIdAndUpdate({_id:id},{city:city});
+
+           let CreateState=null;
+           let CreateCity=null;
+        
+              let finDState =await CountryModel.findOne({country:country});
+              let findCity =await StateModel.findOne({state:state})
+              if(!finDState){
+                CreateState= await CountryModel.create({
+                    country:country
+                })
+              }
+              if(!findCity){
+                CreateCity= await StateModel.create({
+                    state:state
+                })
+                // await CityModel.findByIdAndUpdate(data._id,{ $push: { stateId:s} })
+        
+              }
+              
+        res.send("your data Is Update");
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 module.exports = {
     InsertCountry,
@@ -78,5 +127,8 @@ module.exports = {
     InsertState,
     ShowCountryState,
     InsertCity,
-    DisplayData
+    DisplayData,
+    DeleteData,
+    ShoWFromData,
+    UpdateData
 }
